@@ -7,6 +7,14 @@ import {
   TState,
 } from './types'
 
+const defaultMessages: Record<TAvaliableKeys, string> = {
+  'Loading.First': 'Виджет грузится',
+  'Loading.Second': 'Виджет ещё грузится',
+  'Loading.Third': 'Загрузка идёт дольше чем обычно. Пожалуйста, подождите',
+  'Error.Timeout': 'Ошибка при загрузке. Пожалуйста, обновите окно',
+  'Success.LoadingFinished': 'Виджет загружен!',
+}
+
 const i18nImpelentation = (key: TAvaliableKeys) => defaultMessages[key]
 
 const LoadingSpinner: FC<TLoadingSpinnerProps> = ({
@@ -48,7 +56,7 @@ const LoadingSpinner: FC<TLoadingSpinnerProps> = ({
 
   return (
     <div className='overlay'>
-      <div className='loading' style={{ display: loaded ? 'none' : undefined }}>
+      <div style={{ display: loaded ? 'none' : undefined }}>
         <div>Тут спиннер крутится</div>
         <div>
           {messages
