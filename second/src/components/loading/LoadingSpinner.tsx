@@ -56,7 +56,7 @@ const LoadingSpinner: FC<TLoadingSpinnerProps> = ({
 
   return (
     <div className='overlay'>
-      <div style={{ display: loaded ? 'none' : undefined }}>
+      <div className='loading' style={{ display: loaded ? 'none' : undefined }}>
         <div>Тут спиннер крутится</div>
         <div>
           {messages
