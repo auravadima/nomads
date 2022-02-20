@@ -7,14 +7,6 @@ import {
   TState,
 } from './types'
 
-const defaultMessages: Record<TAvaliableKeys, string> = {
-  'Loading.First': 'Виджет грузится',
-  'Loading.Second': 'Виджет ещё грузится',
-  'Loading.Third': 'Загрузка идёт дольше чем обычно. Пожалуйста, подождите',
-  'Error.Timeout': 'Ошибка при загрузке. Пожалуйста, обновите окно',
-  'Success.LoadingFinished': 'Виджет загружен!',
-}
-
 const i18nImpelentation = (key: TAvaliableKeys) => defaultMessages[key]
 
 const LoadingSpinner: FC<TLoadingSpinnerProps> = ({

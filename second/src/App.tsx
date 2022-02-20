@@ -13,11 +13,11 @@ const customMessages = {
 const App: FC = () => {
   return (
     <>
-      <LoadingSpinner step={3}>
+      <LoadingSpinner step={3000}>
         <SomeWidget />
       </LoadingSpinner>
 
-      <LoadingSpinner step={3} messages={customMessages}>
+      <LoadingSpinner step={2000} messages={customMessages}>
         <SomeWidget />
       </LoadingSpinner>
     </>
