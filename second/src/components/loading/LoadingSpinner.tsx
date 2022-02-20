@@ -1,23 +1,11 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
-
-const LOADING_KEYS = [
-  'Loading.First',
-  'Loading.Second',
-  'Loading.Third',
-  'Error.Timeout',
-] as const
-const SUCCESS_KEY = 'Success.LoadingFinished' as const
-
-type TAvaliableKeys = typeof LOADING_KEYS[number] | typeof SUCCESS_KEY
-
-type TLoadingSpinnerProps = {
-  step?: number
-  messages?: Record<TAvaliableKeys, string>
-  children: React.ReactElement
-  laodedTimeout?: number
-}
-
-type TState = { value: TAvaliableKeys; done: boolean }
+import {
+  LOADING_KEYS,
+  SUCCESS_KEY,
+  TAvaliableKeys,
+  TLoadingSpinnerProps,
+  TState,
+} from './types'
 
 const defaultMessages: Record<TAvaliableKeys, string> = {
   'Loading.First': 'Виджет грузится',
