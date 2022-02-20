@@ -13,6 +13,7 @@ type TLoadingSpinnerProps = {
   step?: number
   messages?: Record<TAvaliableKeys, string>
   children: React.ReactElement
+  laodedTimeout?: number
 }
 
 type TState = { value: TAvaliableKeys; done: boolean }
@@ -28,9 +29,10 @@ const defaultMessages: Record<TAvaliableKeys, string> = {
 const i18nImpelentation = (key: TAvaliableKeys) => defaultMessages[key]
 
 const LoadingSpinner: FC<TLoadingSpinnerProps> = ({
-  step = 5,
+  step = 5000,
   messages,
   children,
+  laodedTimeout = 1500,
 }) => {
   const loadingStates = LOADING_KEYS[Symbol.iterator]()
   const [currentState, setCurrentState] = useState(
@@ -46,10 +48,9 @@ const LoadingSpinner: FC<TLoadingSpinnerProps> = ({
       if (nextState.done) {
         clearInterval(timer.current)
       } else {
-        console.log(123456)
         setCurrentState(nextState as TState)
       }
-    }, step! * 1000)
+    }, step)
   }, [])
 
   const onLoad = useCallback(() => {
@@ -57,7 +58,7 @@ const LoadingSpinner: FC<TLoadingSpinnerProps> = ({
     setCurrentState({ value: SUCCESS_KEY, done: true })
     setTimeout(() => {
       setLoaded(true)
-    }, 1000)
+    }, laodedTimeout)
   }, [])
 
   const loadableChild = React.cloneElement(children as React.ReactElement, {
